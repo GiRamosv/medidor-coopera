@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medidor Coopera</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Medidor Coopera</h1>
+        <p>Simule o consumo de energia da sua casa.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Adicionar aparelho</h2>
+
+            <form id="form-aparelho">
+                <label for="nome">Nome do aparelho</label>
+                <input type="text" id="nome" required>
+
+                <label for="potenciaW">Potência (W)</label>
+                <input type="number" id="potenciaW" min="1" max="10000" required>
+
+                <label for="horasDia">Horas por dia</label>
+                <input type="number" id="horasDia" min="0" max="24" step="any" required>
+
+                <label for="diasMes">Dias no mês</label>
+                <input type="number" id="diasMes" min="1" max="31" step="1" required>
+
+                <button type="submit">Adicionar aparelho</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Aparelhos cadastrados</h2>
+            <ul id="lista-aparelhos"></ul>
+
+            <button type="button" id="btn-simular">Simular consumo</button>
+            <p id="mensagem" role="status"></p>
+        </section>
+
+        <section id="resultado" aria-live="polite">
+            <h2>Resultado da simulação</h2>
+            <p>Adicione seus aparelhos e clique em Simular consumo.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Medidor Coopera Luz · Simulador de consumo de energia</p>
+    </footer>
+</body>
+</html>
