@@ -79,3 +79,6 @@ Fórmula do consumo mensal:
 Consumo (kWh) = Potência (W) × Horas por dia × Dias no mês ÷ 1000
 
 Link do deploy: https://giramosv.github.io/medidor-coopera/
+
+Código - Giovanna Ramos Valério: MC-21-05BM
+Código - Luiza Cabral Crepaldi: MC-21-1HE2
