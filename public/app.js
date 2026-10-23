@@ -1,11 +1,16 @@
 
-const aparelhos = [];
+const aparelhosSalvos = localStorage.getItem("aparelhos");
+
+const aparelhos = aparelhosSalvos
+    ? JSON.parse(aparelhosSalvos)
+    : [];
 
 const form = document.querySelector("#form-aparelho");
 const lista = document.querySelector("#lista-aparelhos");
 const resultado = document.querySelector("#resultado");
 const mensagem = document.querySelector("#mensagem");
 const botaoSimular = document.querySelector("#btn-simular");
+const graficoBarras = document.querySelector("#grafico-barras");
 
 // Formata valores em reais
 function formatarDinheiro(valor) {
@@ -13,6 +18,14 @@ function formatarDinheiro(valor) {
         style: "currency",
         currency: "BRL"
     });
+}
+
+// Salva os aparelhos no navegador
+function salvarAparelhos() {
+    localStorage.setItem(
+        "aparelhos",
+        JSON.stringify(aparelhos)
+    );
 }
 
 // Mostra os aparelhos cadastrados
@@ -33,7 +46,10 @@ function desenharLista() {
 
         botaoRemover.addEventListener("click", () => {
             aparelhos.splice(indice, 1);
+
+            salvarAparelhos();
             desenharLista();
+
             mensagem.textContent = "";
         });
 
@@ -42,17 +58,23 @@ function desenharLista() {
     });
 }
 
+// Mostra os aparelhos salvos ao abrir a página
+desenharLista();
+
 // Adiciona um aparelho ao array
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const nome = document.querySelector("#nome").value.trim();
+
     const potenciaW = Number(
         document.querySelector("#potenciaW").value
     );
+
     const horasDia = Number(
         document.querySelector("#horasDia").value
     );
+
     const diasMes = Number(
         document.querySelector("#diasMes").value
     );
@@ -80,8 +102,11 @@ form.addEventListener("submit", (event) => {
         diasMes
     });
 
+    salvarAparelhos();
     desenharLista();
+
     form.reset();
+
     mensagem.textContent = "Aparelho adicionado com sucesso!";
 });
 
@@ -115,6 +140,7 @@ botaoSimular.addEventListener("click", async () => {
         }
 
         mostrarResultado(dados);
+
         mensagem.textContent = "Simulação concluída!";
     } catch (erro) {
         mensagem.textContent =
@@ -146,11 +172,17 @@ function mostrarResultado(dados) {
         const rotulo = document.createElement("strong");
 
         rotulo.textContent = `${nome}: `;
-        paragrafo.append(rotulo, document.createTextNode(String(valor)));
+
+        paragrafo.append(
+            rotulo,
+            document.createTextNode(String(valor))
+        );
+
         resultado.appendChild(paragrafo);
     });
 
     const destaque = document.createElement("h3");
+
     destaque.textContent =
         `Aparelho que mais consome em dinheiro: ` +
         `${dados.aparelhoMaisCaro.nome} — ` +
@@ -196,4 +228,49 @@ function mostrarResultado(dados) {
 
     tabela.appendChild(corpo);
     resultado.appendChild(tabela);
+
+    // Atualiza o gráfico com os dados da simulação
+    desenharGrafico(dados.detalhes);
+}
+
+// Cria o gráfico de consumo por aparelho
+function desenharGrafico(detalhes) {
+    graficoBarras.replaceChildren();
+
+    if (!detalhes || detalhes.length === 0) {
+        const texto = document.createElement("p");
+        texto.textContent = "Nenhum dado disponível para o gráfico.";
+        graficoBarras.appendChild(texto);
+        return;
+    }
+
+    detalhes.forEach((aparelho) => {
+        const item = document.createElement("div");
+        const nome = document.createElement("p");
+        const trilho = document.createElement("div");
+        const barra = document.createElement("div");
+        const valor = document.createElement("p");
+
+        nome.textContent = aparelho.nome;
+
+        trilho.className = "grafico-trilho";
+        barra.className = "grafico-barra";
+
+        const percentual = Math.max(
+            0,
+            Math.min(100, Number(aparelho.percentual) || 0)
+        );
+
+        barra.style.width = `${percentual}%`;
+
+        valor.textContent =
+            `${aparelho.kwhMes.toLocaleString("pt-BR")} kWh ` +
+            `(${percentual.toLocaleString("pt-BR")}%)`;
+
+        item.className = "grafico-item";
+
+        item.append(nome, trilho, valor);
+        trilho.appendChild(barra);
+        graficoBarras.appendChild(item);
+    });
 }
