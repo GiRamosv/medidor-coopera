@@ -110,8 +110,8 @@ form.addEventListener("submit", (event) => {
     mensagem.textContent = "Aparelho adicionado com sucesso!";
 });
 
-// Envia os aparelhos ao servidor
-botaoSimular.addEventListener("click", async () => {
+/* Faz a simulação diretamente no navegador */
+botaoSimular.addEventListener("click", () => {
     mensagem.textContent = "";
 
     if (aparelhos.length === 0) {
@@ -119,35 +119,90 @@ botaoSimular.addEventListener("click", async () => {
         return;
     }
 
-    botaoSimular.disabled = true;
-    botaoSimular.textContent = "Calculando...";
-
     try {
-        const resposta = await fetch("/api/simular", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ aparelhos })
+        const TARIFA_KWH = 0.68;
+        const VALOR_BANDEIRA = 1.885;
+        const POTENCIA_PAINEL_W = 400;
+        const HSP = 4.25;
+        const EFICIENCIA = 0.8;
+
+        // Calcula o consumo e o custo de cada aparelho
+        const detalhes = aparelhos.map((aparelho) => {
+            const kwhMes =
+                (aparelho.potenciaW *
+                aparelho.horasDia *
+                aparelho.diasMes) / 1000;
+
+            return {
+                nome: aparelho.nome,
+                kwhMes,
+                custo: kwhMes * TARIFA_KWH,
+                percentual: 0
+            };
         });
 
-        const dados = await resposta.json();
+        // Soma o consumo mensal de todos os aparelhos
+        const consumoTotal = detalhes.reduce(
+            (soma, aparelho) => soma + aparelho.kwhMes,
+            0
+        );
 
-        if (!resposta.ok) {
-            mensagem.textContent =
-                dados.erro || "Não foi possível realizar a simulação.";
-            return;
-        }
+        // Calcula o percentual de consumo de cada aparelho
+        detalhes.forEach((aparelho) => {
+            aparelho.percentual = consumoTotal > 0
+                ? (aparelho.kwhMes / consumoTotal) * 100
+                : 0;
+        });
+
+        const custoEnergia = consumoTotal * TARIFA_KWH;
+
+        const adicionalBandeira =
+            (consumoTotal / 100) * VALOR_BANDEIRA;
+
+        const totalMes = custoEnergia + adicionalBandeira;
+
+        // Calcula a quantidade estimada de painéis solares
+        const geracaoPainel =
+            (POTENCIA_PAINEL_W / 1000) *
+            HSP * 30 * EFICIENCIA;
+
+        const paineisNecessarios = Math.ceil(
+            consumoTotal / geracaoPainel
+        );
+
+        // Descobre qual aparelho tem o maior custo
+        const maisCaro = detalhes.reduce((maior, atual) =>
+            atual.custo > maior.custo ? atual : maior
+        );
+
+        // Prepara os dados para mostrar na tela
+        const arredondar = (valor) =>
+            Math.round((valor + Number.EPSILON) * 100) / 100;
+
+        const dados = {
+            consumoKwhMes: arredondar(consumoTotal),
+            custoEnergia: arredondar(custoEnergia),
+            adicionalBandeira: arredondar(adicionalBandeira),
+            totalMes: arredondar(totalMes),
+            paineisNecessarios,
+            aparelhoMaisCaro: {
+                nome: maisCaro.nome,
+                custo: arredondar(maisCaro.custo)
+            },
+            detalhes: detalhes.map((aparelho) => ({
+                nome: aparelho.nome,
+                kwhMes: arredondar(aparelho.kwhMes),
+                custo: arredondar(aparelho.custo),
+                percentual: arredondar(aparelho.percentual)
+            }))
+        };
 
         mostrarResultado(dados);
-
         mensagem.textContent = "Simulação concluída!";
     } catch (erro) {
+        console.error("Erro na simulação:", erro);
         mensagem.textContent =
-            "Não foi possível conectar ao servidor. Verifique se ele está ligado.";
-    } finally {
-        botaoSimular.disabled = false;
-        botaoSimular.textContent = "Simular consumo";
+            "Não foi possível realizar a simulação.";
     }
 });
 
