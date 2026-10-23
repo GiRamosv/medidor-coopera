@@ -1,0 +1,745 @@
+
+/* =========================================
+   MEDIDOR COOPERA
+   Identidade visual: energia, tecnologia
+   e sustentabilidade
+========================================= */
+
+/* 1. CONFIGURAÇÕES GERAIS */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --verde-escuro: #193e2e;
+    --verde-principal: #245b43;
+    --verde-vivo: #397858;
+    --verde-claro: #eaf3ec;
+    --verde-suave: #f4f8f4;
+
+    --dourado: #d4b878;
+    --dourado-claro: #f4e9c9;
+
+    --branco: #ffffff;
+    --fundo: #f5f7f4;
+    --texto: #25362d;
+    --texto-suave: #75847a;
+    --borda: #e1e9e1;
+    --erro: #b74646;
+
+    --sombra-suave: 0 8px 30px rgba(25, 62, 46, 0.06);
+    --sombra-forte: 0 18px 45px rgba(25, 62, 46, 0.11);
+
+    --raio-pequeno: 10px;
+    --raio-medio: 18px;
+    --raio-grande: 28px;
+
+    --transicao: 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--texto);
+    background:
+        radial-gradient(
+            circle at 95% 5%,
+            rgba(212, 184, 120, 0.13),
+            transparent 25rem
+        ),
+        radial-gradient(
+            circle at 0% 35%,
+            rgba(57, 120, 88, 0.07),
+            transparent 28rem
+        ),
+        var(--fundo);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 2. CABEÇALHO */
+
+header {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 34px max(7%, calc((100% - 1180px) / 2));
+    color: var(--branco);
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(212, 184, 120, 0.19),
+            transparent 17rem
+        ),
+        linear-gradient(
+            120deg,
+            #163728 0%,
+            #245b43 58%,
+            #347151 100%
+        );
+    border-bottom: 4px solid var(--dourado);
+}
+
+/* Elementos decorativos criados com CSS */
+
+header::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 300px;
+    height: 300px;
+    right: 6%;
+    top: -205px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 28px rgba(255, 255, 255, 0.035),
+        0 0 0 58px rgba(255, 255, 255, 0.025);
+}
+
+header::after {
+    content: "✳";
+    position: absolute;
+    right: 12%;
+    bottom: -48px;
+    color: rgba(244, 233, 201, 0.15);
+    font-size: 190px;
+    line-height: 1;
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+
+header h1 {
+    position: relative;
+    width: fit-content;
+    margin-bottom: 8px;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.2;
+}
+
+header h1::before {
+    content: "ENERGIA INTELIGENTE";
+    display: block;
+    margin-bottom: 12px;
+    color: var(--dourado-claro);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+header p {
+    max-width: 520px;
+    color: rgba(255, 255, 255, 0.79);
+    font-size: 1rem;
+}
+
+/* 3. ÁREA PRINCIPAL */
+
+main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    gap: 25px;
+    width: min(1180px, 86%);
+    margin: 48px auto 70px;
+    align-items: start;
+}
+
+/* 4. SEÇÕES */
+
+main section {
+    position: relative;
+    min-width: 0;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-medio);
+    box-shadow: var(--sombra-suave);
+    transition:
+        box-shadow var(--transicao),
+        transform var(--transicao),
+        border-color var(--transicao);
+    animation: surgir 0.6s ease both;
+}
+
+main section:hover {
+    border-color: #d2e1d4;
+    box-shadow: var(--sombra-forte);
+}
+
+main section:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+main section:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+main section h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    color: var(--verde-escuro);
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+main section h2::before {
+    content: "";
+    flex-shrink: 0;
+    width: 5px;
+    height: 25px;
+    background: linear-gradient(
+        180deg,
+        var(--dourado),
+        var(--verde-vivo)
+    );
+    border-radius: 10px;
+}
+
+/* 5. FORMULÁRIO */
+
+#form-aparelho {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px 16px;
+}
+
+#form-aparelho label {
+    align-self: end;
+    margin-top: 7px;
+    color: #526358;
+    font-size: 0.83rem;
+    font-weight: 700;
+}
+
+#form-aparelho label:first-of-type,
+#form-aparelho input:first-of-type,
+#form-aparelho button {
+    grid-column: 1 / -1;
+}
+
+#form-aparelho input {
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+    padding: 0 14px;
+    color: var(--verde-escuro);
+    font: inherit;
+    font-size: 0.94rem;
+    background: #f9fbf9;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-pequeno);
+    outline: none;
+    transition:
+        border-color var(--transicao),
+        box-shadow var(--transicao),
+        background var(--transicao);
+}
+
+#form-aparelho input:hover {
+    border-color: #b6cbb9;
+}
+
+#form-aparelho input:focus {
+    background: var(--branco);
+    border-color: var(--verde-vivo);
+    box-shadow: 0 0 0 4px rgba(57, 120, 88, 0.12);
+}
+
+#form-aparelho input::placeholder {
+    color: #a0aca2;
+}
+
+/* 6. BOTÕES */
+
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 12px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: 1px solid transparent;
+    border-radius: var(--raio-pequeno);
+    cursor: pointer;
+    transition:
+        background var(--transicao),
+        color var(--transicao),
+        border-color var(--transicao),
+        box-shadow var(--transicao),
+        transform var(--transicao);
+}
+
+#form-aparelho button {
+    position: relative;
+    margin-top: 16px;
+    color: var(--branco);
+    background: linear-gradient(
+        110deg,
+        var(--verde-principal),
+        var(--verde-vivo)
+    );
+    box-shadow: 0 7px 16px rgba(36, 91, 67, 0.16);
+}
+
+#form-aparelho button::before {
+    content: "+";
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#form-aparelho button:hover {
+    background: var(--verde-escuro);
+    box-shadow: 0 10px 22px rgba(36, 91, 67, 0.24);
+    transform: translateY(-2px);
+}
+
+#form-aparelho button:active,
+#btn-simular:active {
+    transform: scale(0.98);
+}
+
+/* 7. LISTA DE APARELHOS */
+
+#lista-aparelhos {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 22px;
+    list-style: none;
+}
+
+#lista-aparelhos:empty {
+    display: block;
+    min-height: 90px;
+    padding: 27px 15px;
+    text-align: center;
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            #f7faf7,
+            #f7faf7 8px,
+            #f1f6f1 8px,
+            #f1f6f1 16px
+        );
+    border: 1px dashed #cbd9cd;
+    border-radius: var(--raio-pequeno);
+}
+
+#lista-aparelhos:empty::before {
+    content: "Seus aparelhos aparecerão aqui.";
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+}
+
+#lista-aparelhos li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px;
+    background: var(--verde-suave);
+    border: 1px solid #e5eee5;
+    border-radius: 12px;
+    animation: surgir 0.3s ease both;
+}
+
+#lista-aparelhos li span {
+    min-width: 0;
+    color: #3e5345;
+    font-size: 0.84rem;
+    overflow-wrap: anywhere;
+}
+
+#lista-aparelhos li button {
+    flex-shrink: 0;
+    min-height: 34px;
+    padding: 7px 11px;
+    color: var(--erro);
+    background: #fff4f2;
+    border: 1px solid #f0d9d5;
+    font-size: 0.76rem;
+}
+
+#lista-aparelhos li button:hover {
+    color: var(--branco);
+    background: var(--erro);
+    border-color: var(--erro);
+}
+
+/* 8. BOTÃO DE SIMULAÇÃO */
+
+#btn-simular {
+    position: relative;
+    width: 100%;
+    min-height: 54px;
+    color: var(--verde-escuro);
+    background: linear-gradient(
+        105deg,
+        var(--dourado-claro),
+        #e8d39d
+    );
+    border: 1px solid #e2cc8d;
+    box-shadow: 0 7px 18px rgba(150, 119, 48, 0.12);
+}
+
+#btn-simular::before {
+    content: "↗";
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    background: rgba(25, 62, 46, 0.08);
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+#btn-simular:hover:not(:disabled) {
+    color: var(--branco);
+    background: var(--verde-principal);
+    border-color: var(--verde-principal);
+    box-shadow: 0 9px 23px rgba(36, 91, 67, 0.19);
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 9. MENSAGENS DE ESTADO */
+
+#mensagem {
+    min-height: 24px;
+    margin-top: 12px;
+    color: var(--verde-principal);
+    font-size: 0.84rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+#mensagem:empty {
+    min-height: 0;
+    margin-top: 0;
+}
+
+/* 10. RESULTADO DA SIMULAÇÃO */
+
+#resultado {
+    grid-column: 1 / -1;
+    padding: 34px;
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(212, 184, 120, 0.13),
+            transparent 22rem
+        ),
+        var(--branco);
+}
+
+#resultado h2 {
+    margin-bottom: 20px;
+}
+
+#resultado > p {
+    margin: 10px 0;
+    padding: 14px 17px;
+    color: #536459;
+    background: #f7faf7;
+    border: 1px solid #eaf0ea;
+    border-radius: 10px;
+    font-size: 0.91rem;
+}
+
+#resultado > p strong {
+    color: var(--verde-escuro);
+}
+
+#resultado > p:first-of-type {
+    border-left: 4px solid var(--verde-vivo);
+}
+
+#resultado > p:nth-of-type(4) {
+    color: var(--verde-escuro);
+    background: var(--verde-claro);
+    border: 1px solid #d4e5d6;
+    font-size: 1rem;
+}
+
+#resultado > p:nth-of-type(4) strong {
+    font-weight: 800;
+}
+
+#resultado > h3 {
+    margin: 25px 0 14px;
+    color: var(--verde-escuro);
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.03rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+#resultado > h3:first-of-type {
+    padding: 20px;
+    background: linear-gradient(
+        110deg,
+        #edf5ed,
+        #f9f7ef
+    );
+    border: 1px solid #e1e9d9;
+    border-left: 4px solid var(--dourado);
+    border-radius: 12px;
+}
+
+/* 11. TABELA DE DETALHES */
+
+#resultado table {
+    width: 100%;
+    margin-top: 14px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 0.88rem;
+}
+
+#resultado thead {
+    color: var(--branco);
+    background: var(--verde-escuro);
+}
+
+#resultado th {
+    padding: 15px 13px;
+    text-align: left;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+#resultado td {
+    padding: 15px 13px;
+    border-bottom: 1px solid #edf1ed;
+    overflow-wrap: anywhere;
+}
+
+#resultado tbody tr {
+    background: var(--branco);
+    transition: background var(--transicao);
+}
+
+#resultado tbody tr:nth-child(even) {
+    background: #f7faf7;
+}
+
+#resultado tbody tr:hover {
+    background: #eaf3ec;
+}
+
+#resultado tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 12. RODAPÉ */
+
+footer {
+    position: relative;
+    padding: 25px 7%;
+    text-align: center;
+    color: #c7d7cb;
+    background: #173728;
+    border-top: 3px solid var(--dourado);
+}
+
+footer p {
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+}
+
+/* 13. ANIMAÇÕES */
+
+@keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 14. ACESSIBILIDADE */
+
+:focus-visible {
+    outline: 3px solid var(--dourado);
+    outline-offset: 3px;
+}
+
+::selection {
+    color: var(--branco);
+    background: var(--verde-principal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 15. TABLETS */
+
+@media (max-width: 900px) {
+    header {
+        padding: 30px 7%;
+    }
+
+    main {
+        width: 90%;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 18px;
+        margin-top: 32px;
+    }
+
+    main section {
+        padding: 24px;
+    }
+
+    #resultado {
+        padding: 26px;
+    }
+}
+
+/* 16. CELULARES */
+
+@media (max-width: 650px) {
+    header {
+        padding: 30px 6%;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+        letter-spacing: -1.5px;
+    }
+
+    header h1::before {
+        font-size: 0.58rem;
+        letter-spacing: 2px;
+    }
+
+    header p {
+        max-width: 300px;
+        font-size: 0.91rem;
+    }
+
+    header::after {
+        right: -18px;
+        bottom: -24px;
+        font-size: 125px;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        gap: 20px;
+        margin: 25px auto 40px;
+    }
+
+    main section,
+    #resultado {
+        width: 100%;
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    main section h2 {
+        font-size: 1.15rem;
+    }
+
+    #form-aparelho {
+        gap: 8px 12px;
+    }
+
+    #form-aparelho input {
+        height: 46px;
+        font-size: 16px;
+    }
+
+    #lista-aparelhos li {
+        align-items: flex-start;
+    }
+
+    #lista-aparelhos li span {
+        padding-top: 5px;
+    }
+
+    #resultado table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #resultado th,
+    #resultado td {
+        padding: 12px 10px;
+    }
+
+    footer {
+        padding: 22px 6%;
+    }
+}
+
+/* 17. CELULARES PEQUENOS */
+
+@media (max-width: 380px) {
+    #form-aparelho {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #form-aparelho label,
+    #form-aparelho input,
+    #form-aparelho button {
+        grid-column: 1 / -1;
+    }
+
+    header h1 {
+        font-size: 1.9rem;
+    }
+
+    #lista-aparelhos li {
+        flex-direction: column;
+    }
+
+    #lista-aparelhos li button {
+        width: 100%;
+    }
+}
