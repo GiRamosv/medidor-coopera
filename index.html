@@ -1,60 +1,183 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medidor Coopera</title>
+
+    <meta name="theme-color" content="#071b14">
+    <meta name="description" content="Medidor Coopera: simule e acompanhe o consumo de energia da sua casa.">
+
+    <title>Medidor Coopera | Energia Inteligente</title>
+
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <h1>Medidor Coopera</h1>
-        <p>Simule o consumo de energia da sua casa.</p>
+
+    <!-- TELA DE CARREGAMENTO -->
+    <div id="tela-carregamento" class="tela-carregamento">
+        <div class="carregamento-conteudo">
+
+            <!-- Logo da Coopera -->
+            <svg class="logo-carregamento" viewBox="0 0 100 100"
+                 xmlns="http://www.w3.org/2000/svg" role="img"
+                 aria-label="Logo Coopera">
+                <circle cx="50" cy="50" r="44"
+                        fill="none" stroke="#c9a45c" stroke-width="3"/>
+                <path d="M50 77 C20 65 27 30 67 22 C68 52 59 68 50 77Z"
+                      fill="#397858"/>
+                <path d="M50 76 C47 56 52 40 66 25"
+                      fill="none" stroke="#d9bd7b" stroke-width="3"
+                      stroke-linecap="round"/>
+                <path d="M54 42 L43 58 H53 L47 72 L65 51 H55 L61 42Z"
+                      fill="#e0bd70"/>
+            </svg>
+
+            <h1>MEDIDOR <span>COOPERA</span></h1>
+
+            <p class="slogan-carregamento">
+                ENERGIA CONSCIENTE, DECISÕES INTELIGENTES.
+            </p>
+
+            <div class="barra-carregamento">
+                <div class="progresso-carregamento"></div>
+            </div>
+
+            <p class="texto-carregamento">Preparando seu ambiente...</p>
+        </div>
+    </div>
+
+
+    <!-- CABEÇALHO PRINCIPAL -->
+    <header class="cabecalho">
+        <div class="marca">
+            <svg class="logo-cabecalho" viewBox="0 0 100 100"
+                 xmlns="http://www.w3.org/2000/svg" role="img"
+                 aria-label="Logo Coopera">
+                <circle cx="50" cy="50" r="44"
+                        fill="none" stroke="#c9a45c" stroke-width="3"/>
+                <path d="M50 77 C20 65 27 30 67 22 C68 52 59 68 50 77Z"
+                      fill="#397858"/>
+                <path d="M50 76 C47 56 52 40 66 25"
+                      fill="none" stroke="#d9bd7b" stroke-width="3"
+                      stroke-linecap="round"/>
+                <path d="M54 42 L43 58 H53 L47 72 L65 51 H55 L61 42Z"
+                      fill="#e0bd70"/>
+            </svg>
+
+            <div class="marca-texto">
+                <h1>MEDIDOR <span>COOPERA</span></h1>
+                <p>ENERGIA INTELIGENTE</p>
+            </div>
+        </div>
+
+        <div class="cabecalho-descricao">
+            <span class="status-indicador"></span>
+            Tecnologia e sustentabilidade
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>Adicionar aparelho</h2>
 
-            <form id="form-aparelho">
-                <label for="nome">Nome do aparelho</label>
-                <input type="text" id="nome" required>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="conteudo-principal">
 
-                <label for="potenciaW">Potência (W)</label>
-                <input type="number" id="potenciaW" min="1" max="10000" required>
-
-                <label for="horasDia">Horas por dia</label>
-                <input type="number" id="horasDia" min="0" max="24" step="any" required>
-
-                <label for="diasMes">Dias no mês</label>
-                <input type="number" id="diasMes" min="1" max="31" step="1" required>
-
-                <button type="submit">Adicionar aparelho</button>
-            </form>
+        <section class="apresentacao">
+            <span class="etiqueta">GESTÃO DE ENERGIA</span>
+            <h2>Controle seu consumo.<br><span>Transforme seus hábitos.</span></h2>
+            <p>
+                Simule o consumo de energia da sua casa e descubra
+                como utilizar seus aparelhos de forma mais consciente.
+            </p>
         </section>
 
-        <section>
-            <h2>Aparelhos cadastrados</h2>
 
-            <ul id="lista-aparelhos"></ul>
+        <div class="grade-sistema">
 
-            <button type="button" id="btn-simular">
-                Simular consumo
-            </button>
+            <!-- ADICIONAR APARELHO -->
+            <section class="cartao">
+                <div class="titulo-cartao">
+                    <span class="numero-secao">01</span>
+                    <div>
+                        <h2>Adicionar aparelho</h2>
+                        <p>Informe os dados do equipamento.</p>
+                    </div>
+                </div>
 
-            <p id="mensagem" role="status"></p>
-        </section>
+                <form id="form-aparelho">
+                    <label for="nome">Nome do aparelho</label>
+                    <input type="text" id="nome"
+                           placeholder="Ex.: Geladeira" required>
 
-        <section id="resultado" aria-live="polite">
-            <h2>Resultado da simulação</h2>
+                    <label for="potenciaW">Potência (W)</label>
+                    <input type="number" id="potenciaW"
+                           min="1" max="10000"
+                           placeholder="Ex.: 150" required>
+
+                    <label for="horasDia">Horas por dia</label>
+                    <input type="number" id="horasDia"
+                           min="0" max="24" step="any"
+                           placeholder="Ex.: 8" required>
+
+                    <label for="diasMes">Dias no mês</label>
+                    <input type="number" id="diasMes"
+                           min="1" max="31" step="1"
+                           placeholder="Ex.: 30" required>
+
+                    <button type="submit" class="botao-principal">
+                        Adicionar aparelho
+                    </button>
+                </form>
+            </section>
+
+
+            <!-- APARELHOS CADASTRADOS -->
+            <section class="cartao">
+                <div class="titulo-cartao">
+                    <span class="numero-secao">02</span>
+                    <div>
+                        <h2>Aparelhos cadastrados</h2>
+                        <p>Confira os equipamentos adicionados.</p>
+                    </div>
+                </div>
+
+                <ul id="lista-aparelhos" class="lista-aparelhos"></ul>
+
+                <button type="button" id="btn-simular"
+                        class="botao-secundario">
+                    Simular consumo
+                </button>
+
+                <p id="mensagem" role="status" class="mensagem"></p>
+            </section>
+
+        </div>
+
+
+        <!-- RESULTADO -->
+        <section id="resultado" class="cartao secao-resultado"
+                 aria-live="polite">
+            <div class="titulo-cartao">
+                <span class="numero-secao">03</span>
+                <div>
+                    <h2>Resultado da simulação</h2>
+                    <p>Resumo do consumo de energia.</p>
+                </div>
+            </div>
+
             <p>Adicione seus aparelhos e clique em Simular consumo.</p>
         </section>
 
-        <!-- Gráfico de consumo por aparelho -->
-        <section id="grafico-consumo">
-            <h2>Consumo por aparelho</h2>
+
+        <!-- GRÁFICO -->
+        <section id="grafico-consumo" class="cartao secao-grafico">
+            <div class="titulo-cartao">
+                <span class="numero-secao">04</span>
+                <div>
+                    <h2>Consumo por aparelho</h2>
+                    <p>Visualize a participação de cada equipamento.</p>
+                </div>
+            </div>
 
             <div id="grafico-barras">
                 <p>Faça uma simulação para visualizar o gráfico.</p>
@@ -63,10 +186,24 @@
 
     </main>
 
-    <footer>
-        <p>Medidor Coopera Luz · Simulador de consumo de energia <br>
-               <strong>Luiza Crepaldi &amp; Giovanna Ramos</strong>     
+
+    <!-- RODAPÉ INSTITUCIONAL -->
+    <footer class="rodape">
+        <div class="rodape-marca">
+            <strong>COOPERA</strong>
+            <span>ENERGIA INTELIGENTE</span>
+        </div>
+
+        <p>
+            Medidor Coopera Luz · Simulador de consumo de energia
         </p>
+
+        <p class="creditos">
+            Desenvolvido por <strong>Luiza Crepaldi &amp; Giovanna Ramos</strong>
+        </p>
+
+        <span class="selo">INOVAÇÃO • SUSTENTABILIDADE • TECNOLOGIA</span>
     </footer>
+
 </body>
 </html>
