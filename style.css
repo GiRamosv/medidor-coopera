@@ -717,3 +717,130 @@ input {
         width: 180px;
     }
 }
+
+
+/* =========================================
+   CORREÇÕES VISUAIS - MEDIDOR COOPERA
+========================================= */
+
+/* LOGO DO CABEÇALHO */
+.cabecalho .logo-cabecalho {
+    width: 150px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* LISTA DE APARELHOS */
+.lista-aparelhos li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #f7faf7;
+    border: 1px solid #e1e8e1;
+    border-left: 3px solid #397858;
+    border-radius: 7px;
+}
+
+.lista-aparelhos li span {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* BOTÃO REMOVER */
+.lista-aparelhos li button {
+    padding: 7px 13px;
+    color: #ffffff;
+    background: #285b40;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.lista-aparelhos li button:hover {
+    background: #102c20;
+}
+
+/* GRÁFICO DE CONSUMO */
+.grafico-item {
+    margin-bottom: 20px;
+}
+
+.grafico-item p {
+    margin-bottom: 7px;
+    color: #24352b;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.grafico-trilho {
+    width: 100%;
+    height: 13px;
+    overflow: hidden;
+    background: #eaf2ec;
+    border-radius: 20px;
+}
+
+.grafico-barra {
+    height: 100%;
+    min-width: 0;
+    background: linear-gradient(
+        90deg,
+        #285b40,
+        #397858
+    );
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.grafico-item p:last-child {
+    margin-top: 6px;
+    color: #68736b;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* TABELA DE RESULTADOS */
+#resultado table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+#resultado th,
+#resultado td {
+    padding: 11px;
+    border-bottom: 1px solid #e1e8e1;
+    text-align: left;
+}
+
+#resultado th {
+    color: #ffffff;
+    background: #285b40;
+}
+
+/* AJUSTES PARA CELULARES */
+@media (max-width: 600px) {
+    .cabecalho .logo-cabecalho {
+        width: 180px;
+    }
+
+    .lista-aparelhos li {
+        align-items: flex-start;
+    }
+
+    #resultado {
+        overflow-x: auto;
+    }
+}
+
