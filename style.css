@@ -671,6 +671,8 @@ input {
 
 /* NOVA LOGO - CABEÇALHO */
 .logo-cabecalho {
+    width: 300px; /* Aumenta o tamanho da logo */
+    height: auto;
     mix-blend-mode: normal;
     background: transparent;
     object-fit: contain;
