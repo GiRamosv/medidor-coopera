@@ -669,13 +669,14 @@ input {
     margin: 0 auto 20px;
 }
 
-/* NOVA LOGO - CABEÇALHO */
+/* LOGO DO CABEÇALHO */
 .logo-cabecalho {
-    width: 160px; /* Aumenta o tamanho da logo */
+    width: 150px;
+    max-width: 100%;
     height: auto;
-    mix-blend-mode: normal;
-    background: transparent;
     object-fit: contain;
+    display: block;
+    flex-shrink: 0;
 }
 
 /* ORGANIZAÇÃO DA MARCA NO CABEÇALHO */
@@ -683,6 +684,7 @@ input {
     display: flex;
     align-items: center;
     gap: 15px;
+    min-height: 120px;
 }
 
 .marca-texto p {
