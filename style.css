@@ -658,3 +658,27 @@ input {
         font-size: 15px;
     }
 }
+
+/* LOGO DA TELA DE CARREGAMENTO */
+.logo-carregamento {
+    width: 320px;
+    max-width: 85%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* LOGO DO SITE */
+.logo-principal {
+    width: 230px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* REMOVE O FUNDO PRETO DA IMAGEM EM FUNDOS CLAROS OU COLORIDOS */
+.logo-principal {
+    mix-blend-mode: screen;
+}
