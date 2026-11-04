@@ -724,7 +724,7 @@ input {
 ========================================= */
 
 /* LOGO DO CABEÇALHO */
-.cabecalho .logo-cabecalho {
+.cabecalho img {
     width: 150px;
     max-width: 100%;
     height: auto;
