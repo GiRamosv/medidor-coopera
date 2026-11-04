@@ -329,3 +329,21 @@ function desenharGrafico(detalhes) {
         graficoBarras.appendChild(item);
     });
 }
+
+// =========================================
+// TELA DE CARREGAMENTO DA COOPERA
+// =========================================
+
+window.addEventListener("load", () => {
+    const telaCarregamento = document.getElementById("tela-carregamento");
+
+    setTimeout(() => {
+        telaCarregamento.classList.add("oculta");
+
+        // Remove a tela depois da transição
+        setTimeout(() => {
+            telaCarregamento.remove();
+        }, 700);
+
+    }, 2400);
+});
