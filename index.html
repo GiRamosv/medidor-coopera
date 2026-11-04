@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,22 +20,12 @@
     <div id="tela-carregamento" class="tela-carregamento">
         <div class="carregamento-conteudo">
 
-            <!-- Logo da Coopera -->
-            <svg class="logo-carregamento" viewBox="0 0 100 100"
-                 xmlns="http://www.w3.org/2000/svg" role="img"
-                 aria-label="Logo Coopera">
-                <circle cx="50" cy="50" r="44"
-                        fill="none" stroke="#c9a45c" stroke-width="3"/>
-                <path d="M50 77 C20 65 27 30 67 22 C68 52 59 68 50 77Z"
-                      fill="#397858"/>
-                <path d="M50 76 C47 56 52 40 66 25"
-                      fill="none" stroke="#d9bd7b" stroke-width="3"
-                      stroke-linecap="round"/>
-                <path d="M54 42 L43 58 H53 L47 72 L65 51 H55 L61 42Z"
-                      fill="#e0bd70"/>
-            </svg>
-
-            <h1>MEDIDOR <span>COOPERA</span></h1>
+            <!-- Nova logo da Coopera -->
+            <img
+                src="imagen2.jpg"
+                alt="Medidor Coopera"
+                class="logo-carregamento"
+            >
 
             <p class="slogan-carregamento">
                 ENERGIA CONSCIENTE, DECISÕES INTELIGENTES.
@@ -52,22 +43,15 @@
     <!-- CABEÇALHO PRINCIPAL -->
     <header class="cabecalho">
         <div class="marca">
-            <svg class="logo-cabecalho" viewBox="0 0 100 100"
-                 xmlns="http://www.w3.org/2000/svg" role="img"
-                 aria-label="Logo Coopera">
-                <circle cx="50" cy="50" r="44"
-                        fill="none" stroke="#c9a45c" stroke-width="3"/>
-                <path d="M50 77 C20 65 27 30 67 22 C68 52 59 68 50 77Z"
-                      fill="#397858"/>
-                <path d="M50 76 C47 56 52 40 66 25"
-                      fill="none" stroke="#d9bd7b" stroke-width="3"
-                      stroke-linecap="round"/>
-                <path d="M54 42 L43 58 H53 L47 72 L65 51 H55 L61 42Z"
-                      fill="#e0bd70"/>
-            </svg>
+
+            <!-- Nova logo dentro do site -->
+            <img
+                src="imagen2.jpg"
+                alt="Medidor Coopera"
+                class="logo-cabecalho"
+            >
 
             <div class="marca-texto">
-                <h1>MEDIDOR <span>COOPERA</span></h1>
                 <p>ENERGIA INTELIGENTE</p>
             </div>
         </div>
@@ -84,7 +68,12 @@
 
         <section class="apresentacao">
             <span class="etiqueta">GESTÃO DE ENERGIA</span>
-            <h2>Controle seu consumo.<br><span>Transforme seus hábitos.</span></h2>
+
+            <h2>
+                Controle seu consumo.<br>
+                <span>Transforme seus hábitos.</span>
+            </h2>
+
             <p>
                 Simule o consumo de energia da sua casa e descubra
                 como utilizar seus aparelhos de forma mais consciente.
@@ -98,6 +87,7 @@
             <section class="cartao">
                 <div class="titulo-cartao">
                     <span class="numero-secao">01</span>
+
                     <div>
                         <h2>Adicionar aparelho</h2>
                         <p>Informe os dados do equipamento.</p>
@@ -106,23 +96,44 @@
 
                 <form id="form-aparelho">
                     <label for="nome">Nome do aparelho</label>
-                    <input type="text" id="nome"
-                           placeholder="Ex.: Geladeira" required>
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Ex.: Geladeira"
+                        required
+                    >
 
                     <label for="potenciaW">Potência (W)</label>
-                    <input type="number" id="potenciaW"
-                           min="1" max="10000"
-                           placeholder="Ex.: 150" required>
+                    <input
+                        type="number"
+                        id="potenciaW"
+                        min="1"
+                        max="10000"
+                        placeholder="Ex.: 150"
+                        required
+                    >
 
                     <label for="horasDia">Horas por dia</label>
-                    <input type="number" id="horasDia"
-                           min="0" max="24" step="any"
-                           placeholder="Ex.: 8" required>
+                    <input
+                        type="number"
+                        id="horasDia"
+                        min="0"
+                        max="24"
+                        step="any"
+                        placeholder="Ex.: 8"
+                        required
+                    >
 
                     <label for="diasMes">Dias no mês</label>
-                    <input type="number" id="diasMes"
-                           min="1" max="31" step="1"
-                           placeholder="Ex.: 30" required>
+                    <input
+                        type="number"
+                        id="diasMes"
+                        min="1"
+                        max="31"
+                        step="1"
+                        placeholder="Ex.: 30"
+                        required
+                    >
 
                     <button type="submit" class="botao-principal">
                         Adicionar aparelho
@@ -135,6 +146,7 @@
             <section class="cartao">
                 <div class="titulo-cartao">
                     <span class="numero-secao">02</span>
+
                     <div>
                         <h2>Aparelhos cadastrados</h2>
                         <p>Confira os equipamentos adicionados.</p>
@@ -143,8 +155,11 @@
 
                 <ul id="lista-aparelhos" class="lista-aparelhos"></ul>
 
-                <button type="button" id="btn-simular"
-                        class="botao-secundario">
+                <button
+                    type="button"
+                    id="btn-simular"
+                    class="botao-secundario"
+                >
                     Simular consumo
                 </button>
 
@@ -155,10 +170,14 @@
 
 
         <!-- RESULTADO -->
-        <section id="resultado" class="cartao secao-resultado"
-                 aria-live="polite">
+        <section
+            id="resultado"
+            class="cartao secao-resultado"
+            aria-live="polite"
+        >
             <div class="titulo-cartao">
                 <span class="numero-secao">03</span>
+
                 <div>
                     <h2>Resultado da simulação</h2>
                     <p>Resumo do consumo de energia.</p>
@@ -173,6 +192,7 @@
         <section id="grafico-consumo" class="cartao secao-grafico">
             <div class="titulo-cartao">
                 <span class="numero-secao">04</span>
+
                 <div>
                     <h2>Consumo por aparelho</h2>
                     <p>Visualize a participação de cada equipamento.</p>
@@ -199,10 +219,13 @@
         </p>
 
         <p class="creditos">
-            Desenvolvido por <strong>Luiza Crepaldi &amp; Giovanna Ramos</strong>
+            Desenvolvido por
+            <strong>Luiza Crepaldi &amp; Giovanna Ramos</strong>
         </p>
 
-        <span class="selo">INOVAÇÃO • SUSTENTABILIDADE • TECNOLOGIA</span>
+        <span class="selo">
+            INOVAÇÃO • SUSTENTABILIDADE • TECNOLOGIA
+        </span>
     </footer>
 
 </body>

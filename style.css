@@ -659,26 +659,57 @@ input {
     }
 }
 
-/* LOGO DA TELA DE CARREGAMENTO */
+/* NOVA LOGO - TELA DE CARREGAMENTO */
 .logo-carregamento {
-    width: 320px;
+    display: block;
+    width: 360px;
     max-width: 85%;
     height: auto;
     object-fit: contain;
-    display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
 
-/* LOGO DO SITE */
-.logo-principal {
-    width: 230px;
-    max-width: 100%;
-    height: auto;
+/* NOVA LOGO - CABEÇALHO */
+.logo-cabecalho {
+    mix-blend-mode: normal;
+    background: transparent;
     object-fit: contain;
-    display: block;
 }
 
-/* REMOVE O FUNDO PRETO DA IMAGEM EM FUNDOS CLAROS OU COLORIDOS */
-.logo-principal {
-    mix-blend-mode: screen;
+/* ORGANIZAÇÃO DA MARCA NO CABEÇALHO */
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.marca-texto p {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* DEGRADÊ DO CABEÇALHO */
+.cabecalho {
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        #000000 28%,
+        #071b14 48%,
+        #103d29 100%
+    );
+
+    border-bottom: 2px solid #c9a45c;
+}
+
+
+/* AJUSTE PARA CELULARES */
+@media (max-width: 600px) {
+    .logo-carregamento {
+        width: 290px;
+    }
+
+    .logo-cabecalho {
+        width: 180px;
+    }
 }
